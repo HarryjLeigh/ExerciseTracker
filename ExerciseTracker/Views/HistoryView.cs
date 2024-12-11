@@ -33,7 +33,7 @@ public class HistoryView(IExerciseController exerciseController)
                     _exerciseController.Delete();
                     break;
                 case HistoryOptions.Exit:
-                    endMainMenu = true;
+                    
                     break;
             }
         }
