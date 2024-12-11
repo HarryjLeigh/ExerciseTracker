@@ -17,6 +17,6 @@ public class ExerciseService(IRepository<Exercise> exerciseRepository) : IExerci
     public void DeleteExercise(int id)
     {
         Exercise exerciseToDelete = _exerciseRepository.GetById(id);
-        _exerciseRepository.Delete(exerciseToDelete);
+        _exerciseRepository.Delete(exerciseToDelete.Id);
     }
 }
