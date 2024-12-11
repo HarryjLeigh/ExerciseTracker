@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\harry\\Documents\\Rider\\ExerciseTracker\\ExerciseTracker\\ExerciseTracker.csproj": {}
+    "C:\\Users\\harry\\Documents\\Rider\\ExerciseTracker - Copy\\ExerciseTracker\\ExerciseTracker.csproj": {}
   },
   "projects": {
-    "C:\\Users\\harry\\Documents\\Rider\\ExerciseTracker\\ExerciseTracker\\ExerciseTracker.csproj": {
+    "C:\\Users\\harry\\Documents\\Rider\\ExerciseTracker - Copy\\ExerciseTracker\\ExerciseTracker.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\harry\\Documents\\Rider\\ExerciseTracker\\ExerciseTracker\\ExerciseTracker.csproj",
+        "projectUniqueName": "C:\\Users\\harry\\Documents\\Rider\\ExerciseTracker - Copy\\ExerciseTracker\\ExerciseTracker.csproj",
         "projectName": "ExerciseTracker",
-        "projectPath": "C:\\Users\\harry\\Documents\\Rider\\ExerciseTracker\\ExerciseTracker\\ExerciseTracker.csproj",
+        "projectPath": "C:\\Users\\harry\\Documents\\Rider\\ExerciseTracker - Copy\\ExerciseTracker\\ExerciseTracker.csproj",
         "packagesPath": "C:\\Users\\harry\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\harry\\Documents\\Rider\\ExerciseTracker\\ExerciseTracker\\obj\\",
+        "outputPath": "C:\\Users\\harry\\Documents\\Rider\\ExerciseTracker - Copy\\ExerciseTracker\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
