@@ -1,13 +1,10 @@
-using ExerciseTracker.Models;
-using ExerciseTracker.Repository;
-
 namespace ExerciseTracker.Services;
 
-public interface IExerciseService
+public interface IExerciseService<T>  where T : class
 {
-    internal Exercise GetById(int id);
-    internal List<Exercise> GetAllExercises();
-    internal void AddExercise(Exercise exercise);
-    internal void UpdateExercise(Exercise exercise);
-    internal void DeleteExercise(int id);
+    T GetById(int id);
+    IEnumerable<T> GetAllExercises();
+    void AddExercise(T entity);
+    void UpdateExercise(T entity);
+    void DeleteExercise(int id);
 }

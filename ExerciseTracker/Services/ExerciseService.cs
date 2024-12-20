@@ -1,22 +1,21 @@
-using ExerciseTracker.Models;
 using ExerciseTracker.Repository;
 
 namespace ExerciseTracker.Services;
 
-public class ExerciseService(IRepository<Exercise> exerciseRepository) : IExerciseService
+public class ExerciseService<T>(IRepository<T> exerciseRepository) : IExerciseService<T> where T : class
 {
-    private readonly IRepository<Exercise> _exerciseRepository = exerciseRepository;
-
-    public Exercise GetById(int id) => _exerciseRepository.GetById(id);
-    public List<Exercise> GetAllExercises() => _exerciseRepository.GetAll().ToList();
+    private readonly IRepository<T> _exerciseRepository = exerciseRepository;
     
-    public void AddExercise(Exercise exercise) => _exerciseRepository.Add(exercise);
+    public T GetById(int id) => _exerciseRepository.GetById(id);
+    public IEnumerable<T> GetAllExercises() => _exerciseRepository.GetAll().ToList();
 
-    public void UpdateExercise(Exercise exercise) => _exerciseRepository.Update(exercise);
-    
+    public void AddExercise(T entity) => _exerciseRepository.Add(entity);
+
+    public void UpdateExercise(T entity) => _exerciseRepository.Update(entity);
+
     public void DeleteExercise(int id)
     {
-        Exercise exerciseToDelete = _exerciseRepository.GetById(id);
+        T exerciseToDelete = _exerciseRepository.GetById(id);
         _exerciseRepository.Delete(exerciseToDelete);
     }
 }

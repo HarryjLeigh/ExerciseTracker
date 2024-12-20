@@ -15,7 +15,7 @@ public static class UserInput
                     if (!Validator.IsDateFormatValid(input))
                         return ValidationResult.Error(
                             "[bold red]Invalid date. Enter a date/time in format [green]'yyyy-MM-dd HH:mm'[/].[/]");
-                    
+
                     DateTime parsedDate = Util.ParseDateWithFormat(input);
 
                     if (text == "start")
@@ -45,7 +45,7 @@ public static class UserInput
             new TextPrompt<string>("Enter exercise comments: "));
     }
 
-    internal static int IdPrompt(List<Exercise> exercises)
+    internal static int IdPrompt<T>(List<T> exercises) where T : Exercise
     {
         var input = AnsiConsole.Prompt(
             new TextPrompt<int>("Enter exercise ID: ")
@@ -54,7 +54,42 @@ public static class UserInput
                         ? ValidationResult.Success()
                         : ValidationResult.Error("[red]Invalid ID. Please enter ID From table![/]"
                         )));
-
         return input;
+    }
+
+    internal static double DistancePrompt()
+    {
+        var input = AnsiConsole.Prompt(
+            new TextPrompt<string>("Enter cardio distance: ")
+                .Validate(input =>
+                    Validator.IsDistanceValid(input)
+                        ? ValidationResult.Success()
+                        : ValidationResult.Error("[bold red]Invalid cardio distance. Please enter a valid postive number![/]")
+                ));
+        return double.Parse(input);
+    }
+
+    internal static int SetsPrompt()
+    {
+        var input = AnsiConsole.Prompt(
+            new TextPrompt<string>("Enter number of sets: ")
+                .Validate(input =>
+                    Validator.IsNumberValid(input) 
+                        ? ValidationResult.Success()
+                        : ValidationResult.Error("[bold red]Invalid number of sets. Please enter a valid number![/]")
+                ));
+        return int.Parse(input);
+    }
+
+    internal static int TotalWeightPrompt()
+    {
+        var input = AnsiConsole.Prompt(
+            new TextPrompt<string>("Enter total weight: ")
+                .Validate(input =>
+                    Validator.IsNumberValid(input)
+                        ? ValidationResult.Success()
+                        : ValidationResult.Error("[bold red]Invalid total weight. Please enter a valid number![/]")));
+        
+        return int.Parse(input);
     }
 }

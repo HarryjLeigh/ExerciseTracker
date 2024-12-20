@@ -1,9 +1,14 @@
 using System.ComponentModel.DataAnnotations;
-using System.Reflection;
 
 namespace ExerciseTracker.Enums;
 
-internal enum MainMenuOptions
+internal enum UserInterfaceOptions
+{
+    [Display(Name = "Weights")] Weights,
+    [Display(Name = "Cardio")] Cardio,
+    [Display(Name = "Exit")] Exit
+}
+internal enum MenuOptions
 {
     [Display(Name = "Add Exercise")] Add,
     [Display(Name = "Exercise History")] History,
@@ -18,11 +23,24 @@ internal enum HistoryOptions
     [Display(Name = "Exit")] Exit
 }
 
-internal enum UpdateOptions
+internal enum UpdateWeightOptions
 {
     [Display(Name = "Start")] Start,
     [Display(Name = "Finish")] Finish,
+    [Display(Name = "Sets")] Sets,
+    [Display(Name = "Total Weight")] TotalWeight,
     [Display(Name = "Comments")] Comments,
     [Display(Name = "All")] All,
     [Display(Name = "Exit")] Exit,
 }
+
+internal enum UpdateCardioOptions
+{
+    [Display(Name = "Start")] Start,
+    [Display(Name = "Finish")] Finish,
+    [Display(Name = "Distance")] Distance,
+    [Display(Name = "Comments")] Comments,
+    [Display(Name = "All")] All,
+    [Display(Name = "Exit")] Exit,
+}
+

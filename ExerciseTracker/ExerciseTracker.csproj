@@ -23,4 +23,12 @@
       <PackageReference Include="Spectre.Console" Version="0.49.2-preview.0.69" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Include="bin\Debug\net9.0\appSettings.json" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="bin\Debug\net9.0\" />
+    </ItemGroup>
+
 </Project>

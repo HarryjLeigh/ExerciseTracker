@@ -1,15 +1,16 @@
-using ExerciseTracker.Models;
-
 namespace ExerciseTracker.Controllers;
 
 public interface IExerciseController
 {
-    internal void ViewAll();
-    internal void Add();
-    internal void Update(
+    void ViewAll();
+    void Add();
+    void Update(
         bool updateStart = false,
         bool updateFinish = false,
-        bool updateComments = false
+        bool updateComments = false,
+        bool updateSets = false,
+        bool updateTotalWeight =  false,
+        bool updateDistance = false
         );
-    internal void Delete();
+    void Delete();
 }

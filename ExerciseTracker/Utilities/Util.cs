@@ -9,15 +9,14 @@ public static class Util
 
     internal static DateTime ParseDateWithFormat(string date)
     {
-        if (DateTime.TryParseExact(
+        return DateTime.TryParseExact(
                 date,
                 DateFormat,
                 CultureInfo.InvariantCulture,
                 DateTimeStyles.None,
-                out DateTime formattedDate)) 
-            return formattedDate;
-
-        return new DateTime();
+                out DateTime formattedDate)
+                ? formattedDate
+                : default;
     }
 
     internal static void AskUserToContinue()
@@ -30,7 +29,16 @@ public static class Util
     {
         AnsiConsole.MarkupLine("Type '[bold yellow]0[/]' to exit or any other key to continue...");
         var answer = Console.ReadLine();
-        if (answer == "0") return true;
-        return false;
+        return answer == "0";
+    }
+
+    internal static bool SessionsAvailable<T>(List<T> exercises) where T : class
+        => exercises.Count > 0;
+
+
+    internal static void DisplayNoSessionsMessage(string exerciseType)
+    {
+        AnsiConsole.MarkupLine($"[bold red]No {exerciseType} sessions found.[/]");
+        AskUserToContinue();
     }
 }

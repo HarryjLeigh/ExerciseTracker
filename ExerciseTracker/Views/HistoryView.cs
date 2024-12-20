@@ -1,21 +1,34 @@
 using ExerciseTracker.Controllers;
 using ExerciseTracker.Enums;
 using ExerciseTracker.Utilities;
-using Spectre.Console;
 
 namespace ExerciseTracker.Views;
 
 public class HistoryView(IExerciseController exerciseController)
 {
     private readonly IExerciseController _exerciseController = exerciseController;
-    private readonly UpdateView _updateView = new UpdateView(exerciseController);
-    internal void Run(MainMenuOptions selected)
+    private UpdateView _updateView { get; set; }
+    
+    internal void Run(MenuOptions selectedMenu, UserInterfaceOptions selectedSession)
     {
         bool endMainMenu = false;
+        if (selectedSession == UserInterfaceOptions.Cardio)
+            _updateView = new UpdateCardioView(exerciseController);
+        else if (selectedSession == UserInterfaceOptions.Weights)
+            _updateView = new UpdateWeightsView(exerciseController);
+        
         while (!endMainMenu)
         {
-            Console.Clear();
-            ViewExtensions.GetEnumDescription(selected);
+            Console.Clear(); 
+            
+            string exerciseText = string.Empty;
+            if (_updateView is UpdateCardioView)
+                exerciseText = "Cardio";
+            else if (_updateView is UpdateWeightsView)
+                exerciseText = "Weights";
+            
+            ViewExtensions.GetEnumDescription(selectedMenu, exerciseText);
+            
             var selectedEnum = ViewExtensions.GetViewChoice<HistoryOptions>();
             switch (selectedEnum)
             {
@@ -29,7 +42,7 @@ public class HistoryView(IExerciseController exerciseController)
                     break;
                 case HistoryOptions.Delete:
                     Console.Clear();
-                    ViewExtensions.GetEnumDescription(selectedEnum);
+                    ViewExtensions.GetEnumDescription(selectedEnum, exerciseText);
                     _exerciseController.Delete();
                     break;
                 case HistoryOptions.Exit:

@@ -1,14 +1,13 @@
 using ExerciseTracker.Controllers;
 using ExerciseTracker.Enums;
 using ExerciseTracker.Utilities;
-using Spectre.Console;
 
 namespace ExerciseTracker.Views;
 
-public class UserInterface(IExerciseController controller)
+public class UserInterface(IExerciseController weightController, IExerciseController cardioController)
 {
-    private readonly IExerciseController _exerciseController = controller;
-    private readonly HistoryView _historyView = new HistoryView(controller);
+    private readonly WeightView _weightView = new WeightView(weightController);
+    private readonly CardioView _cardioView = new CardioView(cardioController);
 
     internal void Run()
     {
@@ -16,17 +15,17 @@ public class UserInterface(IExerciseController controller)
         while (!endMainMenu)
         {
             Console.Clear();
-            var selectedEnum = ViewExtensions.GetViewChoice<MainMenuOptions>();
-               
+            var selectedEnum = ViewExtensions.GetViewChoice<UserInterfaceOptions>();
+            
             switch (selectedEnum)
             {
-                case MainMenuOptions.Add:
-                    _exerciseController.Add();
+                case UserInterfaceOptions.Weights:
+                    _weightView.Run(selectedEnum);
                     break;
-                case MainMenuOptions.History:
-                    _historyView.Run(selectedEnum);
+                case UserInterfaceOptions.Cardio:
+                    _cardioView.Run(selectedEnum);
                     break;
-                case MainMenuOptions.Exit:
+                case UserInterfaceOptions.Exit:
                     endMainMenu = true;
                     break;
             }

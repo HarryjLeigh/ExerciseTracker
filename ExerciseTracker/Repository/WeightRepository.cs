@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ExerciseTracker.Repository;
 
-public class ExerciseRepository<T>(AppDbContext context) : IRepository<T> where T : class
+public class WeightRepository<T>(AppDbContext context) : IRepository<T> where T : class
 {
     private readonly DbContext _context = context;
     private readonly DbSet<T> _dbSet = context.Set<T>();

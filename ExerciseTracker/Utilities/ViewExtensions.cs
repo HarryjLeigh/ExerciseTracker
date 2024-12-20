@@ -20,9 +20,12 @@ public static class ViewExtensions
             e => EnumExtensions.GetEnumDisplayName(e) == choice);
     }
 
-    internal static void GetEnumDescription(Enum enumValue)
+    internal static void GetEnumDescription(Enum enumValue, string exerciseText = "")
     {
         var menuChoice = EnumExtensions.GetEnumDisplayName(enumValue);
-        AnsiConsole.MarkupLine($"You selected: [green]{menuChoice}[/]");
+        var message = string.IsNullOrWhiteSpace(exerciseText)
+            ? $"You selected: [bold italic Magenta]{menuChoice}[/]"
+            : $"You selected: [bold italic Magenta]{menuChoice} - {exerciseText}[/]";
+        AnsiConsole.MarkupLine(message);
     }
 }
